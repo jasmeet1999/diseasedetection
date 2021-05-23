@@ -40,7 +40,7 @@
             </div>
             <div class="col-sm gold center">
                 <div style="width: 100%;">
-                    <form action="" method="post">
+                    <form action="{{ url_for('preview') }}" method="post">
                         <label for="image" class="form-label h5">Choose a file to Upload</label>
                         <input id="image" type="file" class="form-control form-control-lg" name="image"
                             accept=".jpeg,.jpg,.png" required>

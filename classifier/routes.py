@@ -1,5 +1,5 @@
 from classifier import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 
 
 @app.route("/")
@@ -12,6 +12,9 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/preview")
+@app.route("/preview", methods=["GET", "POST"])
 def preview():
-    return render_template("preview.html")
+    if request.method == "POST":
+        return render_template("preview.html")
+    else:
+        return redirect(url_for("home"))
