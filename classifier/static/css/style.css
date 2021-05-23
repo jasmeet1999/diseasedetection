@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.orange {
+  background-color: #e1701a;
+}
+
+.gold {
+  background-color: #f6dcbf;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.my-btn {
+  background-color: #0b3954;
+  color: whitesmoke;
+}
+
+.my-btn:hover {
+  background-color: #0e4a6c;
+  color: whitesmoke;
+}
+
+#image {
+  display: inline;
+  width: 80%;
+  text-align: center;
+}
