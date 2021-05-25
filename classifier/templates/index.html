@@ -1,60 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="{{ url_for('static',filename='/css/style.css') }}">
-
-    <title>Disease Detection</title>
-</head>
-
-<body>
-
-    <nav class="navbar fixed-top bg-white navbar-light">
-        <a class="navbar-brand h1" href="#">ML Doctor</a>
-    </nav>
-
-
-    <div>
-        <div class="row text-center vh-100">
-            <div class="col-sm orange center">
-                <div style="width: 100%;">
-                    <h1>Hello World</h1>
-                    <p>Some text to display</p>
-                </div>
+{% extends "layout.html" %}
+{% block main %}
+<div>
+    <div class="row text-center vh-100">
+        <div class="col-sm orange center">
+            <div style="width: 100%;">
+                <h1>Hello World</h1>
+                <p>Some text to display</p>
             </div>
-            <div class="col-sm gold center">
-                <div style="width: 100%;">
-                    <form action="{{ url_for('preview') }}" method="post">
-                        <label for="image" class="form-label h5">Choose a file to Upload</label>
-                        <input id="image" type="file" class="form-control form-control-lg" name="image"
-                            accept=".jpeg,.jpg,.png" required>
-                        <br><br>
-                        <input type="submit" class="btn my-btn" value="Upload">
-                    </form>
-                </div>
+        </div>
+        <div class="col-sm gold center">
+            <div style="width: 100%;">
+                <form action="{{ url_for('preview') }}" method="post" enctype="multipart/form-data">
+                    <label for="file" class="form-label h5">Choose a file to Upload</label>
+                    <input id="image" type="file" name="file" class="form-control form-control-lg" name="image"
+                        accept=".jpeg,.jpg,.png" required>
+                    <br><br>
+                    <input type="submit" class="btn my-btn" value="Upload">
+                </form>
             </div>
         </div>
     </div>
-
-    <footer class="fixed-bottom text-center">
-        <p style="margin: 0; padding: 8px;">Copyright &copy 2020-2021 Group 9</p>
-    </footer>
-</body>
-
-</html>
+</div>
+{% endblock %}

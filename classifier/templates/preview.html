@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="preview text-center">
+    <img class="preview-image" src="{{ url_for('static',filename=img_url) }}" alt="">
+    <br>
+    <input class="btn predict" type="submit" name="" value="Predict">
+</div>
+{% endblock %}

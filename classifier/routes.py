@@ -1,5 +1,7 @@
 from classifier import app
 from flask import render_template, redirect, url_for, request
+from werkzeug.utils import secure_filename
+import os
 
 
 @app.route("/")
@@ -15,6 +17,10 @@ def home():
 @app.route("/preview", methods=["GET", "POST"])
 def preview():
     if request.method == "POST":
-        return render_template("preview.html")
+        file = request.files["file"]
+        file_name = secure_filename(file.filename)
+        file_path = "classifier/static/user_file/" + file_name
+        file.save(file_path)
+        return render_template("preview.html", img_url="/user_file/" + file_name)
     else:
         return redirect(url_for("home"))

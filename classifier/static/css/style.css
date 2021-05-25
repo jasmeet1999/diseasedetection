@@ -26,6 +26,32 @@
   color: whitesmoke;
 }
 
+.preview {
+  min-height: 100vh;
+  background-color: #f0f5fa;
+}
+
+.preview-image {
+  width: 40%;
+  max-width: 420px;
+  margin-top: 80px;
+  padding: 10px;
+  background-color: whitesmoke;
+  border: 8px solid #0e4a6c;
+  border-radius: 8px;
+}
+
+.predict {
+  margin: 20px;
+  margin-bottom: 50px;
+  background-color: #e1701a;
+  color: #212529;
+}
+
+.predict:hover {
+  background-color: #e78c47;
+}
+
 #image {
   display: inline;
   width: 80%;
