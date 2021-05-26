@@ -1,8 +1,17 @@
 {% extends "layout.html" %}
 {% block main %}
 <div class="preview text-center">
-    <img class="preview-image" src="{{ url_for('static',filename=img_url) }}" alt="">
-    <br>
-    <input class="btn predict" type="submit" name="" value="Predict">
+    <form action="{{ url_for('predict') }}" method="post">
+        <img class="preview-image" src="{{ url_for('static',filename=img_url) }}" alt="">
+        <br>
+        <select class="form-select" name="disease-type" style="padding: 5px; margin-top: 20px;">
+            <!-- <option selected>Select Disease Type</option> -->
+            <option value="lung-cancer">Lung Cancer</option>
+            <option value="breast-cancer">Breast Cancer</option>
+            <option value="skin-cancer">Skin Cancer</option>
+        </select>
+        <br>
+        <input class="btn predict btn-lg" type="submit" name="" value="Predict">
+    </form>
 </div>
 {% endblock %}
