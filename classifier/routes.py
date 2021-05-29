@@ -1,6 +1,10 @@
 from classifier import app
 from flask import render_template, redirect, url_for, request
 from werkzeug.utils import secure_filename
+from keras import models
+from classifier.model.SkinCancer import SkinCancer
+from classifier.model.LungCancer import LungCancer
+from classifier.model.BreastCancer import BreastCancer
 import os
 
 
@@ -32,11 +36,27 @@ def preview():
         return redirect(url_for("home"))
 
 
+from keras.preprocessing import image
+import numpy as np
+
+
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
         disease_type = request.form.get("disease-type")
-        print(disease_type)
         user_file = "classifier/static/user_file"
         file = os.listdir(os.path.join(os.getcwd(), user_file))
-        return render_template("predict.html", img_url="/user_file/" + file[0])
+        cancer = object()
+        if disease_type == "lung-cancer":
+            cancer = LungCancer(url=os.path.join(user_file, file[0]))
+        elif disease_type == "breast-cancer":
+            cancer = BreastCancer(url=os.path.join(user_file, file[0]))
+        elif disease_type == "skin-cancer":
+            cancer = SkinCancer(url=os.path.join(user_file, file[0]))
+        result = cancer.predict()
+        print(result)
+        return render_template(
+            "predict.html", img_url="/user_file/" + file[0], result=result
+        )
+    else:
+        return redirect(url_for("home"))
